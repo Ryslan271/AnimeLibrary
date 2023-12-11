@@ -30,6 +30,7 @@ namespace AnimeAX.Models.DataBase
         public int AnimeTypeId { get; set; }
         public int AnimeStatusId { get; set; }
         public int AgeLimitId { get; set; }
+        public byte[] Image { get; set; }
     
         public virtual AgeLimit AgeLimit { get; set; }
         public virtual AnimeStatus AnimeStatus { get; set; }

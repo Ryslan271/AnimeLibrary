@@ -5,16 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fbf5f5f19ed546a1a2cf567e62040c8d" Name="Diagram1">
-        <EntityTypeShape EntityType="AnimebdModel.Administrator" Width="1.5" PointX="7.75" PointY="1.375" />
-        <EntityTypeShape EntityType="AnimebdModel.AgeLimit" Width="1.5" PointX="0.75" PointY="4.5" />
-        <EntityTypeShape EntityType="AnimebdModel.Anime" Width="1.5" PointX="3" PointY="3.75" />
-        <EntityTypeShape EntityType="AnimebdModel.AnimeGenre" Width="1.5" PointX="5.25" PointY="10.625" />
-        <EntityTypeShape EntityType="AnimebdModel.AnimeStatus" Width="1.5" PointX="0.75" PointY="7.875" />
-        <EntityTypeShape EntityType="AnimebdModel.AnimeStatusFromUser" Width="1.5" PointX="5.25" PointY="4.375" />
-        <EntityTypeShape EntityType="AnimebdModel.AnimeType" Width="1.5" PointX="0.75" PointY="1.625" />
-        <EntityTypeShape EntityType="AnimebdModel.FavoritesAnime" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="AnimebdModel.Administrator" Width="1.5" PointX="5.75" PointY="7.25" />
+        <EntityTypeShape EntityType="AnimebdModel.AgeLimit" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="AnimebdModel.Anime" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="AnimebdModel.AnimeGenre" Width="1.5" PointX="5.25" PointY="10.5" />
+        <EntityTypeShape EntityType="AnimebdModel.AnimeStatus" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="AnimebdModel.AnimeStatusFromUser" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="AnimebdModel.AnimeType" Width="1.5" PointX="0.75" PointY="4.625" />
+        <EntityTypeShape EntityType="AnimebdModel.FavoritesAnime" Width="1.5" PointX="5.25" PointY="4.375" />
         <EntityTypeShape EntityType="AnimebdModel.Status" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="AnimebdModel.User" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="AnimebdModel.User" Width="1.5" PointX="3" PointY="9.125" />
         <AssociationConnector Association="AnimebdModel.FK_Anime_AgeLimit" />
         <AssociationConnector Association="AnimebdModel.FK_Anime_AnimeStatus" />
         <AssociationConnector Association="AnimebdModel.FK_Anime_AnimeType" />

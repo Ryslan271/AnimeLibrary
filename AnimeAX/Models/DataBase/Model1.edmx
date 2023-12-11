@@ -35,6 +35,7 @@
           <Property Name="AnimeTypeId" Type="int" Nullable="false" />
           <Property Name="AnimeStatusId" Type="int" Nullable="false" />
           <Property Name="AgeLimitId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" Nullable="false" />
         </EntityType>
         <EntityType Name="AnimeGenre">
           <Key>
@@ -362,6 +363,7 @@
           <Property Name="AnimeTypeId" Type="Int32" Nullable="false" />
           <Property Name="AnimeStatusId" Type="Int32" Nullable="false" />
           <Property Name="AgeLimitId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="AgeLimit" Relationship="AnimebdModel.FK_Anime_AgeLimit" FromRole="Anime" ToRole="AgeLimit" />
           <NavigationProperty Name="AnimeStatus" Relationship="AnimebdModel.FK_Anime_AnimeStatus" FromRole="Anime" ToRole="AnimeStatus" />
           <NavigationProperty Name="AnimeType" Relationship="AnimebdModel.FK_Anime_AnimeType" FromRole="Anime" ToRole="AnimeType" />
@@ -535,7 +537,7 @@
           <End Type="AnimebdModel.Anime" Role="Anime" Multiplicity="*" />
           <End Type="AnimebdModel.AnimeGenre" Role="AnimeGenre" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -564,6 +566,7 @@
           <EntitySetMapping Name="Anime">
             <EntityTypeMapping TypeName="AnimebdModel.Anime">
               <MappingFragment StoreEntitySet="Anime">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="AgeLimitId" ColumnName="AgeLimitId" />
                 <ScalarProperty Name="AnimeStatusId" ColumnName="AnimeStatusId" />
                 <ScalarProperty Name="AnimeTypeId" ColumnName="AnimeTypeId" />

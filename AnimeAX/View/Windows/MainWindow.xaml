@@ -41,19 +41,52 @@
             <StackPanel VerticalAlignment="Top" Style="{StaticResource ResourceKey=StyleStackPanel}">
                 <ListBox
                     HorizontalAlignment="Left"
+                    d:ItemsSource="{d:SampleData ItemCount=6}"
                     ItemsSource="{Binding Animes}"
                     MouseDoubleClick="ListBox_MouseDoubleClick">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                
-                                <TextBlock Text="{Binding Name}" />
-                                
-                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    MinWidth="70"
+                                    MinHeight="100"
+                                    Margin="0,0,10,0"
+                                    VerticalAlignment="Top"
+                                    Source="{Binding Image}" />
+
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        FontWeight="Black"
+                                        Foreground="#a52c2c"
+                                        Text="{Binding Name}" />
+
+                                    <ItemsControl
+                                        Grid.Row="1"
+                                        Margin="0,5"
+                                        DataContext="{Binding AnimeGenre}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Genre}" />
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+
+                                    <TextBlock
+                                        Grid.Row="2"
+                                        Text="{Binding ContentText}"
+                                        TextWrapping="Wrap" />
+                                </Grid>
                             </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
