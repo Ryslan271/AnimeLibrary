@@ -108,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ForClient\Pages\ListAnime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,7 +134,11 @@
     </Compile>
     <Compile Include="Models\AdditionalMethods\LoginMethods.cs" />
     <Compile Include="Models\AdditionalMethods\RegistrationMethods.cs" />
+    <Compile Include="Models\DependencyProperties\ListAnime.cs" />
     <Compile Include="Models\DependencyProperties\MainWindow.cs" />
+    <Compile Include="View\ForClient\Pages\ListAnime.xaml.cs">
+      <DependentUpon>ListAnime.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -250,7 +258,6 @@
   <ItemGroup>
     <Folder Include="View\ForAdmin\Pages\" />
     <Folder Include="View\ForAdmin\Windows\" />
-    <Folder Include="View\ForClient\Pages\" />
     <Folder Include="View\ForClient\Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

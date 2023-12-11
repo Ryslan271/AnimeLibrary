@@ -48,3 +48,6 @@ C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\Pages\Login.baml
 C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\Pages\Registration.baml
 C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\bin\Debug\FontAwesome.WPF.dll
 C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\bin\Debug\FontAwesome.WPF.xml
+C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\Resources\Style\ComboBoxStyle.baml
+C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\ForClient\Pages\ListAnime.g.cs
+C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\ForClient\Pages\ListAnime.baml

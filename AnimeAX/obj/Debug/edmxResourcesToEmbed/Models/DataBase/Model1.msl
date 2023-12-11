@@ -4,98 +4,107 @@
     <EntitySetMapping Name="Administrator">
       <EntityTypeMapping TypeName="AnimebdModel.Administrator">
         <MappingFragment StoreEntitySet="Administrator">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AgeLimit">
       <EntityTypeMapping TypeName="AnimebdModel.AgeLimit">
         <MappingFragment StoreEntitySet="AgeLimit">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="FromAge" ColumnName="FromAge" />
           <ScalarProperty Name="BeforeAge" ColumnName="BeforeAge" />
+          <ScalarProperty Name="FromAge" ColumnName="FromAge" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Anime">
       <EntityTypeMapping TypeName="AnimebdModel.Anime">
         <MappingFragment StoreEntitySet="Anime">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ContentText" ColumnName="ContentText" />
-          <ScalarProperty Name="FileBit" ColumnName="FileBit" />
-          <ScalarProperty Name="AnimeGenreId" ColumnName="AnimeGenreId" />
-          <ScalarProperty Name="AnimeTypeId" ColumnName="AnimeTypeId" />
-          <ScalarProperty Name="AnimeStatusId" ColumnName="AnimeStatusId" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="AgeLimitId" ColumnName="AgeLimitId" />
+          <ScalarProperty Name="AnimeStatusId" ColumnName="AnimeStatusId" />
+          <ScalarProperty Name="AnimeTypeId" ColumnName="AnimeTypeId" />
+          <ScalarProperty Name="AnimeGenreId" ColumnName="AnimeGenreId" />
+          <ScalarProperty Name="FileBit" ColumnName="FileBit" />
+          <ScalarProperty Name="ContentText" ColumnName="ContentText" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AnimeGenre">
       <EntityTypeMapping TypeName="AnimebdModel.AnimeGenre">
         <MappingFragment StoreEntitySet="AnimeGenre">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AnimeStatus">
       <EntityTypeMapping TypeName="AnimebdModel.AnimeStatus">
         <MappingFragment StoreEntitySet="AnimeStatus">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AnimeStatusFromUser">
       <EntityTypeMapping TypeName="AnimebdModel.AnimeStatusFromUser">
         <MappingFragment StoreEntitySet="AnimeStatusFromUser">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="AnimeId" ColumnName="AnimeId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="AnimeId" ColumnName="AnimeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AnimeType">
       <EntityTypeMapping TypeName="AnimebdModel.AnimeType">
         <MappingFragment StoreEntitySet="AnimeType">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="FavoritesAnime">
       <EntityTypeMapping TypeName="AnimebdModel.FavoritesAnime">
         <MappingFragment StoreEntitySet="FavoritesAnime">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="AnimeId" ColumnName="AnimeId" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Status">
       <EntityTypeMapping TypeName="AnimebdModel.Status">
         <MappingFragment StoreEntitySet="Status">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Status1" ColumnName="Status" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="AnimebdModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="AnimeGenre_Anime" TypeName="AnimebdModel.AnimeGenre_Anime" StoreEntitySet="AnimeGenre_Anime">
+      <EndProperty Name="AnimeGenre">
+        <ScalarProperty Name="Id" ColumnName="AnimeGenreId" />
+      </EndProperty>
+      <EndProperty Name="Anime">
+        <ScalarProperty Name="Id" ColumnName="AnimeId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -1,6 +1,4 @@
-﻿using AnimeAX.Models.DataBase;
-using AnimeAX.View.ForClient.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,22 +14,26 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpf.Ui.Controls;
 
-namespace AnimeAX.View.Windows
+namespace AnimeAX.View.ForClient.Pages
 {
     /// <summary>
-    /// Основное окно, вывода списка
+    /// Логика взаимодействия для ListAnime.xaml
     /// </summary>
-    public partial class MainWindow : UiWindow
+    public partial class ListAnime : UiPage
     {
-        public static MainWindow Instance { get; private set; }
-
-        public MainWindow()
+        public ListAnime()
         {
             InitializeComponent();
+        }
 
-            Instance = this;
+        private void ComboBoxGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-            MainFrame.Navigate(new ListAnime());
+        }
+
+        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
