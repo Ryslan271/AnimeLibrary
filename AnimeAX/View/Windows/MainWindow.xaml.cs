@@ -26,5 +26,15 @@ namespace AnimeAX.View.Windows
         {
             InitializeComponent();
         }
+
+        private void ComboBoxGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
