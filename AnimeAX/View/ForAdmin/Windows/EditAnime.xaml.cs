@@ -10,6 +10,7 @@ using Wpf.Ui.Controls;
 using System.Collections.ObjectModel;
 using MessageBox = System.Windows.MessageBox;
 using AnimeAX.Models.DataBase;
+using AnimeAX.View.ForAdmin.Pages;
 
 namespace AnimeAX.View.ForAdmin.Windows
 {
@@ -132,6 +133,8 @@ namespace AnimeAX.View.ForAdmin.Windows
             App.Db.SaveChanges();
             MessageBox.Show("Данные сохранены");
 
+            ListAnime.Instance.AnimeListBox.Items.Refresh();
+            Close();
         }
     }
 }

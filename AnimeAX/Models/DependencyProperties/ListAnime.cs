@@ -8,32 +8,32 @@ namespace AnimeAX.View.ForClient.Pages
 {
     partial class ListAnime
     {
-        public List<AnimeType> AnimeTypes
+        public ObservableCollection<AnimeType> AnimeTypes
         {
-            get { return (List<AnimeType>)GetValue(AnimeTypesProperty); }
+            get { return (ObservableCollection<AnimeType>)GetValue(AnimeTypesProperty); }
             set { SetValue(AnimeTypesProperty, value); }
         }
 
         public static readonly DependencyProperty AnimeTypesProperty =
-            DependencyProperty.Register("AnimeTypes", typeof(List<AnimeType>), typeof(ListAnime));
+            DependencyProperty.Register("AnimeTypes", typeof(ObservableCollection<AnimeType>), typeof(ListAnime));
 
-        public List<AnimeStatus> AnimeStatuses
+        public ObservableCollection<AnimeStatus> AnimeStatuses
         {
-            get { return (List<AnimeStatus>)GetValue(AnimeStatusesProperty); }
+            get { return (ObservableCollection<AnimeStatus>)GetValue(AnimeStatusesProperty); }
             set { SetValue(AnimeStatusesProperty, value); }
         }
 
         public static readonly DependencyProperty AnimeStatusesProperty =
-            DependencyProperty.Register("AnimeStatuses", typeof(List<AnimeStatus>), typeof(ListAnime));
+            DependencyProperty.Register("AnimeStatuses", typeof(ObservableCollection<AnimeStatus>), typeof(ListAnime));
 
-        public List<AnimeGenre> AnimeGenres
+        public ObservableCollection<AnimeGenre> AnimeGenres
         {
-            get { return (List<AnimeGenre>)GetValue(AnimeGenresProperty); }
+            get { return (ObservableCollection<AnimeGenre>)GetValue(AnimeGenresProperty); }
             set { SetValue(AnimeGenresProperty, value); }
         }
 
         public static readonly DependencyProperty AnimeGenresProperty =
-            DependencyProperty.Register("AnimeGenres", typeof(List<AnimeGenre>), typeof(ListAnime));
+            DependencyProperty.Register("AnimeGenres", typeof(ObservableCollection<AnimeGenre>), typeof(ListAnime));
 
         public ObservableCollection<AnimeGenre> CurrentAnimeGenres
         {
@@ -61,32 +61,32 @@ namespace AnimeAX.View.ForAdmin.Pages
 {
     partial class ListAnime
     {
-        public List<AnimeType> AnimeTypes
+        public ObservableCollection<AnimeType> AnimeTypes
         {
-            get { return (List<AnimeType>)GetValue(AnimeTypesProperty); }
+            get { return (ObservableCollection<AnimeType>)GetValue(AnimeTypesProperty); }
             set { SetValue(AnimeTypesProperty, value); }
         }
 
         public static readonly DependencyProperty AnimeTypesProperty =
-            DependencyProperty.Register("AnimeTypes", typeof(List<AnimeType>), typeof(ListAnime));
+            DependencyProperty.Register("AnimeTypes", typeof(ObservableCollection<AnimeType>), typeof(ListAnime));
 
-        public List<AnimeStatus> AnimeStatuses
+        public ObservableCollection<AnimeStatus> AnimeStatuses
         {
-            get { return (List<AnimeStatus>)GetValue(AnimeStatusesProperty); }
+            get { return (ObservableCollection<AnimeStatus>)GetValue(AnimeStatusesProperty); }
             set { SetValue(AnimeStatusesProperty, value); }
         }
 
         public static readonly DependencyProperty AnimeStatusesProperty =
-            DependencyProperty.Register("AnimeStatuses", typeof(List<AnimeStatus>), typeof(ListAnime));
+            DependencyProperty.Register("AnimeStatuses", typeof(ObservableCollection<AnimeStatus>), typeof(ListAnime));
 
-        public List<AnimeGenre> AnimeGenres
+        public ObservableCollection<AnimeGenre> AnimeGenres
         {
-            get { return (List<AnimeGenre>)GetValue(AnimeGenresProperty); }
+            get { return (ObservableCollection<AnimeGenre>)GetValue(AnimeGenresProperty); }
             set { SetValue(AnimeGenresProperty, value); }
         }
 
         public static readonly DependencyProperty AnimeGenresProperty =
-            DependencyProperty.Register("AnimeGenres", typeof(List<AnimeGenre>), typeof(ListAnime));
+            DependencyProperty.Register("AnimeGenres", typeof(ObservableCollection<AnimeGenre>), typeof(ListAnime));
 
         public ObservableCollection<AnimeGenre> CurrentAnimeGenres
         {

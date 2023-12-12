@@ -2,6 +2,7 @@
 using AnimeAX.View.ForAdmin.Windows;
 using AnimeAX.View.Windows;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,11 +22,18 @@ namespace AnimeAX.View.ForAdmin.Pages
 {
     public partial class ListAnime : UiPage
     {
+        public static ListAnime Instance;
         public ListAnime()
         {
             Animes = App.Db.Anime.Local;
 
+            AnimeGenres = App.Db.AnimeGenre.Local;
+            AnimeStatuses = App.Db.AnimeStatus.Local;
+            AnimeTypes = App.Db.AnimeType.Local;
+
             InitializeComponent();
+
+            Instance = this;
         }
 
         private void ComboBoxGenre_SelectionChanged(object sender, SelectionChangedEventArgs e)

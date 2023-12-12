@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 
 namespace AnimeAX.Models.DataBase
 {
@@ -15,5 +18,7 @@ namespace AnimeAX.Models.DataBase
                 return new Uri(tempFilePath);
             }
         }
+
+        public IEnumerable<AnimeGenre> Genres => AnimeGenre_Anime.Select(g => g.AnimeGenre);
     }
 }
