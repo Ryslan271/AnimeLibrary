@@ -13,10 +13,10 @@ namespace AnimeAX.Models.DataBase
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AnimebdEntities : DbContext
+    public partial class AnimebdEntities1 : DbContext
     {
-        public AnimebdEntities()
-            : base("name=AnimebdEntities")
+        public AnimebdEntities1()
+            : base("name=AnimebdEntities1")
         {
         }
     
@@ -29,6 +29,7 @@ namespace AnimeAX.Models.DataBase
         public virtual DbSet<AgeLimit> AgeLimit { get; set; }
         public virtual DbSet<Anime> Anime { get; set; }
         public virtual DbSet<AnimeGenre> AnimeGenre { get; set; }
+        public virtual DbSet<AnimeGenre_Anime> AnimeGenre_Anime { get; set; }
         public virtual DbSet<AnimeStatus> AnimeStatus { get; set; }
         public virtual DbSet<AnimeStatusFromUser> AnimeStatusFromUser { get; set; }
         public virtual DbSet<AnimeType> AnimeType { get; set; }

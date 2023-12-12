@@ -12,18 +12,13 @@ namespace AnimeAX.Models.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class AnimeGenre
+    public partial class AnimeGenre_Anime
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AnimeGenre()
-        {
-            this.AnimeGenre_Anime = new HashSet<AnimeGenre_Anime>();
-        }
-    
+        public int AnimeId { get; set; }
+        public int AnimeGenreId { get; set; }
         public int Id { get; set; }
-        public string Genre { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AnimeGenre_Anime> AnimeGenre_Anime { get; set; }
+        public virtual Anime Anime { get; set; }
+        public virtual AnimeGenre AnimeGenre { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using AnimeAX.Models.DataBase;
-using AnimeAX.View.ForClient.Pages;
+using AnimeAX.View.ForAdmin.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;

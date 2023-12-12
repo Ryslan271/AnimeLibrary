@@ -1,0 +1,212 @@
+﻿<ui:UiWindow
+    x:Class="AnimeAX.View.ForAdmin.Windows.EditAnime"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.fontawesome.io/icons/"
+    xmlns:local="clr-namespace:AnimeAX.View.ForAdmin.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="EditAnime"
+    Width="800"
+    Height="600"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+
+            <StackPanel Margin="10">
+                <Border
+                    Margin="0,0,0,10"
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    CornerRadius="3">
+                    <Image x:Name="AnimePhoto" Source="{Binding CurrentAnime.Image}" />
+                </Border>
+
+                <Button
+                    Margin="0,0,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Click="EditPhoto"
+                    Content="Изменить фото" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="1"
+                Margin="20,20,20,40"
+                Style="{StaticResource ResourceKey=StyleStackPanel}">
+                <Border
+                    Padding="10"
+                    BorderBrush="Gray"
+                    BorderThickness="3"
+                    CornerRadius="3">
+                    <MediaElement
+                        Name="mePlayer"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        LoadedBehavior="Manual"
+                        Source="{Binding CurrentAnime.VideoFile}"
+                        Stretch="UniformToFill" />
+                </Border>
+
+                <StackPanel
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Click="PlayMeplayer"
+                        Content="Play" />
+
+                    <Button
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Click="PauseMePlayer"
+                        Content="Pause" />
+                </StackPanel>
+
+                <Button
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Click="Button_Click"
+                    Content="Изменить видео" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="10,0,0,20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Style="{StaticResource ResourceKey=StyleStackPanel}">
+
+                <TextBlock Text="Название" />
+                <TextBox
+                    x:Name="Name"
+                    MinWidth="500"
+                    MaxWidth="500"
+                    Text="{Binding CurrentAnime.Name}"
+                    TextWrapping="Wrap" />
+
+                <Separator Margin="0,2,0,2" />
+
+                <TextBlock Text="Описание" />
+                <TextBox
+                    x:Name="Content"
+                    MinWidth="500"
+                    MaxWidth="500"
+                    Text="{Binding CurrentAnime.Name}"
+                    TextWrapping="Wrap" />
+
+                <Separator Margin="0,2,0,2" />
+
+                <TextBlock HorizontalAlignment="Left" Text="Жанры" />
+                <ComboBox
+                    x:Name="ComboBoxGenre"
+                    Height="30"
+                    ItemsSource="{Binding AnimeGenres}"
+                    SelectionChanged="ComboBoxGenre_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Genre}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Border
+                    Margin="0,5,0,0"
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    CornerRadius="3">
+                    <ListBox
+                        x:Name="GenreAnimeList"
+                        MaxHeight="200"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        d:ItemsSource="{d:SampleData ItemCount=3}"
+                        ItemsSource="{Binding CurrentAnimeGenres}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Padding="2"
+                                    BorderBrush="Gray"
+                                    BorderThickness="1"
+                                    CornerRadius="3">
+                                    <TextBlock
+                                        MaxWidth="120"
+                                        Margin="0"
+                                        Padding="0"
+                                        Text="{Binding Genre}"
+                                        TextWrapping="Wrap" />
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="SnapsToDevicePixels" Value="true" />
+                                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </Border>
+
+                <Separator Margin="0,2,0,2" />
+
+                <TextBlock HorizontalAlignment="Left" Text="Тип аниме" />
+                <ComboBox
+                    x:Name="ComboBoxType"
+                    Height="30"
+                    ItemsSource="{Binding AnimeTypes}"
+                    SelectedIndex="{Binding CurrentAnime.AnimeType.Id}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Type}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBlock HorizontalAlignment="Left" Text="Статус аниме" />
+                <ComboBox
+                    x:Name="ComboBoxStatus"
+                    Height="30"
+                    ItemsSource="{Binding AnimeStatuses}"
+                    SelectedIndex="{Binding CurrentAnime.AnimeStatus.Id}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Status}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <Button
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Click="Saving"
+                Content="Соханить данные" />
+        </Grid>
+    </ScrollViewer>
+</ui:UiWindow>

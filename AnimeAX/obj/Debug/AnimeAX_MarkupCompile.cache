@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\App.xaml
-111044901159
+13441757648
 101191735464
-26-1278740275
+31-1684391368
 24-1225889766
-Resources\Style\ComboBoxStyle.xaml;Resources\Style\GridGeneralStyle.xaml;Resources\Style\ListGroupStyle.xaml;Resources\Style\LoginRegistStyle.xaml;Resources\Style\MenuButton.xaml;Resources\Style\StoryOrdersStyle.xaml;View\ForClient\Pages\ListAnime.xaml;View\Pages\Login.xaml;View\Pages\Registration.xaml;View\Windows\Entrance.xaml;View\Windows\MainWindow.xaml;
+Resources\Style\ComboBoxStyle.xaml;Resources\Style\GridGeneralStyle.xaml;Resources\Style\ListGroupStyle.xaml;Resources\Style\LoginRegistStyle.xaml;Resources\Style\MenuButton.xaml;Resources\Style\StoryOrdersStyle.xaml;View\ForAdmin\Pages\ListAnime.xaml;View\ForAdmin\Windows\EditAnime.xaml;View\ForClient\Pages\ListAnime.xaml;View\Pages\Login.xaml;View\Pages\Registration.xaml;View\Windows\Entrance.xaml;View\Windows\MainWindow.xaml;
 
 False
 

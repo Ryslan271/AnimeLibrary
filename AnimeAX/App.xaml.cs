@@ -6,7 +6,7 @@ namespace AnimeAX
 {
     public partial class App : Application
     {
-        public static AnimebdEntities Db = new AnimebdEntities();
+        public static AnimebdEntities1 Db = new AnimebdEntities1();
 
         public static User CurrentUser;
         public static Administrator Admin;
@@ -23,6 +23,7 @@ namespace AnimeAX
             Db.User.Load();
             Db.Status.Load();
             Db.FavoritesAnime.Load();
+            Db.AnimeGenre_Anime.Load();
         }
     }
 }

@@ -17,16 +17,15 @@ namespace AnimeAX.Models.DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Anime()
         {
+            this.AnimeGenre_Anime = new HashSet<AnimeGenre_Anime>();
             this.AnimeStatusFromUser = new HashSet<AnimeStatusFromUser>();
             this.FavoritesAnime = new HashSet<FavoritesAnime>();
-            this.AnimeGenre = new HashSet<AnimeGenre>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public string ContentText { get; set; }
-        public bool FileBit { get; set; }
-        public int AnimeGenreId { get; set; }
+        public byte[] FileBit { get; set; }
         public int AnimeTypeId { get; set; }
         public int AnimeStatusId { get; set; }
         public int AgeLimitId { get; set; }
@@ -36,10 +35,10 @@ namespace AnimeAX.Models.DataBase
         public virtual AnimeStatus AnimeStatus { get; set; }
         public virtual AnimeType AnimeType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnimeGenre_Anime> AnimeGenre_Anime { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnimeStatusFromUser> AnimeStatusFromUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavoritesAnime> FavoritesAnime { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AnimeGenre> AnimeGenre { get; set; }
     }
 }

@@ -25,12 +25,11 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
     <Property Name="ContentText" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FileBit" Type="bit" Nullable="false" />
-    <Property Name="AnimeGenreId" Type="int" Nullable="false" />
+    <Property Name="FileBit" Type="varbinary(max)" />
     <Property Name="AnimeTypeId" Type="int" Nullable="false" />
     <Property Name="AnimeStatusId" Type="int" Nullable="false" />
     <Property Name="AgeLimitId" Type="int" Nullable="false" />
-    <Property Name="Image" Type="image" Nullable="false" />
+    <Property Name="Image" Type="image" />
   </EntityType>
   <EntityType Name="AnimeGenre">
     <Key>
@@ -39,15 +38,13 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Genre" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Animebd.dbo.AnimeGenre_Anime" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
   <EntityType Name="AnimeGenre_Anime">
     <Key>
-      <PropertyRef Name="AnimeId" />
-      <PropertyRef Name="AnimeGenreId" />
+      <PropertyRef Name="Id" />
     </Key>
     <Property Name="AnimeId" Type="int" Nullable="false" />
     <Property Name="AnimeGenreId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="AnimeStatus">
     <Key>
@@ -222,18 +219,13 @@
     <EntitySet Name="AgeLimit" EntityType="Self.AgeLimit" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Anime" EntityType="Self.Anime" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AnimeGenre" EntityType="Self.AnimeGenre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnimeGenre_Anime" EntityType="Self.AnimeGenre_Anime" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AnimeStatus" EntityType="Self.AnimeStatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AnimeStatusFromUser" EntityType="Self.AnimeStatusFromUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AnimeType" EntityType="Self.AnimeType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FavoritesAnime" EntityType="Self.FavoritesAnime" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="AnimeGenre_Anime" EntityType="Self.AnimeGenre_Anime" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [AnimeGenre_Anime].[AnimeId] AS [AnimeId], 
-    [AnimeGenre_Anime].[AnimeGenreId] AS [AnimeGenreId]
-    FROM [dbo].[AnimeGenre_Anime] AS [AnimeGenre_Anime]</DefiningQuery>
-    </EntitySet>
     <AssociationSet Name="FK_Anime_AgeLimit" Association="Self.FK_Anime_AgeLimit">
       <End Role="AgeLimit" EntitySet="AgeLimit" />
       <End Role="Anime" EntitySet="Anime" />

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище AnimebdModelContainer" CdmEntityContainer="AnimebdEntities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище AnimebdModelContainer" CdmEntityContainer="AnimebdEntities1">
     <EntitySetMapping Name="Administrator">
       <EntityTypeMapping TypeName="AnimebdModel.Administrator">
         <MappingFragment StoreEntitySet="Administrator">
@@ -28,7 +28,6 @@
           <ScalarProperty Name="AgeLimitId" ColumnName="AgeLimitId" />
           <ScalarProperty Name="AnimeStatusId" ColumnName="AnimeStatusId" />
           <ScalarProperty Name="AnimeTypeId" ColumnName="AnimeTypeId" />
-          <ScalarProperty Name="AnimeGenreId" ColumnName="AnimeGenreId" />
           <ScalarProperty Name="FileBit" ColumnName="FileBit" />
           <ScalarProperty Name="ContentText" ColumnName="ContentText" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -41,6 +40,15 @@
         <MappingFragment StoreEntitySet="AnimeGenre">
           <ScalarProperty Name="Genre" ColumnName="Genre" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnimeGenre_Anime">
+      <EntityTypeMapping TypeName="AnimebdModel.AnimeGenre_Anime">
+        <MappingFragment StoreEntitySet="AnimeGenre_Anime">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AnimeGenreId" ColumnName="AnimeGenreId" />
+          <ScalarProperty Name="AnimeId" ColumnName="AnimeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -98,13 +106,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="AnimeGenre_Anime" TypeName="AnimebdModel.AnimeGenre_Anime" StoreEntitySet="AnimeGenre_Anime">
-      <EndProperty Name="AnimeGenre">
-        <ScalarProperty Name="Id" ColumnName="AnimeGenreId" />
-      </EndProperty>
-      <EndProperty Name="Anime">
-        <ScalarProperty Name="Id" ColumnName="AnimeId" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
