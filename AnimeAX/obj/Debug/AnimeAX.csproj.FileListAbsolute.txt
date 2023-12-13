@@ -55,3 +55,5 @@ C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\ForAdmin\Pages\ListA
 C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\ForAdmin\Windows\EditAnime.g.cs
 C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\ForAdmin\Pages\ListAnime.baml
 C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\ForAdmin\Windows\EditAnime.baml
+C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\ForClient\Pages\ViewAnime.baml
+C:\Users\Ruslan\source\repos\AnimeAX\AnimeAX\obj\Debug\View\ForClient\Pages\ViewAnime.g.cs

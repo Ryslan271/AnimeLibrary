@@ -117,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ForClient\Pages\ListAnime.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ForClient\Pages\ViewAnime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +197,7 @@
     <Compile Include="Models\DependencyProperties\EditAnime.cs" />
     <Compile Include="Models\DependencyProperties\ListAnime.cs" />
     <Compile Include="Models\DependencyProperties\MainWindow.cs" />
+    <Compile Include="Models\DependencyProperties\ViewAnime.cs" />
     <Compile Include="Models\Extension\Anime.cs" />
     <Compile Include="View\ForAdmin\Pages\ListAnime.xaml.cs">
       <DependentUpon>ListAnime.xaml</DependentUpon>
@@ -202,6 +207,9 @@
     </Compile>
     <Compile Include="View\ForClient\Pages\ListAnime.xaml.cs">
       <DependentUpon>ListAnime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ForClient\Pages\ViewAnime.xaml.cs">
+      <DependentUpon>ViewAnime.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

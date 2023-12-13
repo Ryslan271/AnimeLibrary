@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:fa="http://schemas.fontawesome.io/icons/"
-    xmlns:local="clr-namespace:AnimeAX.View.ForClient.Pages"
+    xmlns:local="clr-namespace:AnimeAX.View.ForAdmin.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="ListAnime"
@@ -21,18 +21,23 @@
 
         <Border
             Margin="10,0,10,10"
+            HorizontalAlignment="Left"
             BorderBrush="#adb5bd"
             BorderThickness="2"
             CornerRadius="4">
-            <StackPanel VerticalAlignment="Top" Style="{StaticResource ResourceKey=StyleStackPanel}">
+            <StackPanel
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Style="{StaticResource ResourceKey=StyleStackPanel}">
                 <ListBox
+                    x:Name="AnimeListBox"
                     HorizontalAlignment="Left"
                     d:ItemsSource="{d:SampleData ItemCount=6}"
                     ItemsSource="{Binding Animes}"
                     MouseDoubleClick="ListBox_MouseDoubleClick">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Grid>
+                            <Grid HorizontalAlignment="Left">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*" />
@@ -41,11 +46,12 @@
                                 <Image
                                     MinWidth="70"
                                     MinHeight="100"
+                                    MaxHeight="100"
                                     Margin="0,0,10,0"
                                     VerticalAlignment="Top"
                                     Source="{Binding Image}" />
 
-                                <Grid Grid.Column="1">
+                                <Grid Grid.Column="1" HorizontalAlignment="Left">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
@@ -53,6 +59,7 @@
                                     </Grid.RowDefinitions>
 
                                     <TextBlock
+                                        HorizontalAlignment="Left"
                                         FontWeight="Black"
                                         Foreground="#a52c2c"
                                         Text="{Binding Name}" />
@@ -60,7 +67,8 @@
                                     <ItemsControl
                                         Grid.Row="1"
                                         Margin="0,5"
-                                        DataContext="{Binding AnimeGenre}">
+                                        HorizontalAlignment="Left"
+                                        DataContext="{Binding Genres}">
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Genre}" />
@@ -70,6 +78,7 @@
 
                                     <TextBlock
                                         Grid.Row="2"
+                                        HorizontalAlignment="Left"
                                         Text="{Binding ContentText}"
                                         TextWrapping="Wrap" />
                                 </Grid>
@@ -81,7 +90,7 @@
         </Border>
 
         <Border
-            Grid.Row="1"
+            Grid.RowSpan="2"
             Grid.Column="1"
             Padding="5,0,10,0"
             BorderBrush="Black"
@@ -110,7 +119,7 @@
                     <TextBlock HorizontalAlignment="Left" Text="Тип" />
                     <ComboBox
                         x:Name="ComboBoxType"
-                        Height="30"
+                        Height="35"
                         ItemsSource="{Binding AnimeTypes}"
                         SelectedIndex="0">
                         <ComboBox.ItemTemplate>
@@ -126,7 +135,7 @@
                     <TextBlock HorizontalAlignment="Left" Text="Статус" />
                     <ComboBox
                         x:Name="ComboBoxStatus"
-                        Height="30"
+                        Height="35"
                         ItemsSource="{Binding AnimeStatuses}"
                         SelectedIndex="0">
                         <ComboBox.ItemTemplate>
@@ -142,38 +151,15 @@
                     <TextBlock HorizontalAlignment="Left" Text="Жанры" />
                     <ComboBox
                         x:Name="ComboBoxGenre"
-                        Height="30"
+                        Height="35"
                         ItemsSource="{Binding AnimeGenres}"
-                        SelectedIndex="0"
-                        SelectionChanged="ComboBoxGenre_SelectionChanged">
+                        SelectedIndex="0">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Genre}" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                </StackPanel>
-
-                <StackPanel Margin="5,5,0,0" VerticalAlignment="Top">
-                    <Border
-                        BorderBrush="Gray"
-                        BorderThickness="1"
-                        CornerRadius="3">
-                        <ListBox
-                            HorizontalAlignment="Left"
-                            d:ItemsSource="{d:SampleData ItemCount=3}"
-                            ItemsSource="{Binding CurrentAnimeGenres}"
-                            MouseDoubleClick="ListBox_MouseDoubleClick">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock
-                                        MaxWidth="120"
-                                        Text="{Binding Genre}"
-                                        TextWrapping="Wrap" />
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Border>
                 </StackPanel>
             </StackPanel>
         </Border>

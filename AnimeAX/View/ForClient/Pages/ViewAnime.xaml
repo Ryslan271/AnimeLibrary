@@ -1,0 +1,71 @@
+﻿<ui:UiPage
+    x:Class="AnimeAX.View.ForClient.Pages.ViewAnime"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.fontawesome.io/icons/"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="ViewAnime"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <DockPanel>
+            <Button
+                Margin="10,0,0,0"
+                Click="AllAnime"
+                Content="Все аниме" />
+            <Button
+                Margin="0,0,10,0"
+                HorizontalAlignment="Right"
+                Click="AddInFavorites"
+                Content="Добавить в избранные"
+                DockPanel.Dock="Right" />
+        </DockPanel>
+
+        <Border
+            Grid.Row="1"
+            Margin="5"
+            BorderBrush="Gray"
+            BorderThickness="3"
+            CornerRadius="3">
+            <MediaElement
+                Name="mePlayer"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                LoadedBehavior="Manual"
+                Source="{Binding CurrentAnime.VideoFile}"
+                Stretch="UniformToFill"
+                Visibility="Hidden" />
+        </Border>
+
+        <StackPanel
+            Grid.Row="2"
+            Margin="0,5,0,5"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+
+            <Button
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Click="PlayPlayer"
+                Content="Play" />
+
+            <Button
+                Margin="10,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Click="PausePlayer"
+                Content="Pause" />
+        </StackPanel>
+    </Grid>
+</ui:UiPage>

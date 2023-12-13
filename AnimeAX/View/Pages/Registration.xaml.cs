@@ -52,12 +52,15 @@ namespace AnimeAX.View.Pages
                 App.CurrentUser = userNew;
 
                 App.Db.SaveChanges();
+
+                App.CurrentUser = userNew;
             }
             catch (Exception)
             {
                 MessageBox.Show("Что то случилось, пожалуйста, проверьте введенный данные");
                 return;
             }
+
 
             new MainWindow().Show();
             Entrance.Instance.Close();
