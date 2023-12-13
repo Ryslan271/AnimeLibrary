@@ -16,13 +16,17 @@ namespace AnimeAX.View.ForAdmin.Windows
 {
     public partial class EditAnime : UiWindow
     {
-        public EditAnime(Anime anime)
+        private Anime currentAnime;
+        public EditAnime(Anime anime = null)
         {
-            CurrentAnime = anime;
+            currentAnime = anime;
+
+            CurrentAnime = anime ?? new Anime();
 
             AnimeGenres = new ObservableCollection<AnimeGenre>(App.Db.AnimeGenre.Local.Where(g => CurrentAnime.AnimeGenre_Anime.FirstOrDefault(a => a.AnimeGenre == g) == null));
             AnimeStatuses = App.Db.AnimeStatus.Local;
             AnimeTypes = App.Db.AnimeType.Local;
+            AgeLimets = App.Db.AgeLimit.Local;
 
             CurrentAnimeGenres = new ObservableCollection<AnimeGenre>(CurrentAnime.AnimeGenre_Anime.Select(a => a.AnimeGenre));
 
@@ -111,30 +115,48 @@ namespace AnimeAX.View.ForAdmin.Windows
 
         private void Saving(object sender, RoutedEventArgs e)
         {
-            foreach (var genre in CurrentAnimeGenres)
+            try
             {
-                if (CurrentAnime.AnimeGenre_Anime.Select(a => a.AnimeGenre).Contains(genre) == true)
-                    continue;
+                CurrentAnime.AgeLimit = ComboBoxAge.SelectedItem as AgeLimit;
+                CurrentAnime.AnimeStatus = ComboBoxStatus.SelectedItem as AnimeStatus;
+                CurrentAnime.AnimeType = ComboBoxType.SelectedItem as AnimeType;
 
-                if (CurrentAnime.AnimeGenre_Anime.FirstOrDefault(g => g.AnimeGenre == genre) != null)
-                    continue;
+                if (currentAnime == null)
+                {
+                    App.Db.Anime.Local.Add(CurrentAnime);
+                    App.Db.SaveChanges();
+                }
 
-                App.Db.AnimeGenre_Anime.Add
-                    (
-                        new AnimeGenre_Anime
-                        {
-                            Anime = CurrentAnime,
-                            AnimeGenre = genre
-                        }
-                    );
+                foreach (var genre in CurrentAnimeGenres)
+                {
+                    if (CurrentAnime.AnimeGenre_Anime.Select(a => a.AnimeGenre).Contains(genre) == true)
+                        continue;
+
+                    if (CurrentAnime.AnimeGenre_Anime.FirstOrDefault(g => g.AnimeGenre == genre) != null)
+                        continue;
+
+                    App.Db.AnimeGenre_Anime.Local.Add
+                        (
+                            new AnimeGenre_Anime
+                            {
+                                Anime = CurrentAnime,
+                                AnimeGenre = genre
+                            }
+                        );
+                }
+
+
+                App.Db.SaveChanges();
+                MessageBox.Show("Данные сохранены");
+
+                ListAnime.Instance.AnimeListBox.Items.Refresh();
+                Close();
             }
-
-
-            App.Db.SaveChanges();
-            MessageBox.Show("Данные сохранены");
-
-            ListAnime.Instance.AnimeListBox.Items.Refresh();
-            Close();
+            catch (Exception)
+            {
+                MessageBox.Show("Что то пошло не так");
+                Close();
+            }
         }
     }
 }

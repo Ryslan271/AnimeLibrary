@@ -213,6 +213,18 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+
+                    <TextBlock HorizontalAlignment="Left" Text="Возврасной лимит" />
+                    <ComboBox
+                        x:Name="ComboBoxAge"
+                        Height="30"
+                        ItemsSource="{Binding AgeLimets}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                 </StackPanel>
 
                 <Button

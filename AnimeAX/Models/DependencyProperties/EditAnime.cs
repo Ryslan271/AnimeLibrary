@@ -51,5 +51,14 @@ namespace AnimeAX.View.ForAdmin.Windows
 
         public static readonly DependencyProperty AnimeStatusesProperty =
             DependencyProperty.Register("AnimeStatuses", typeof(ObservableCollection<AnimeStatus>), typeof(EditAnime));
+
+        public ObservableCollection<AgeLimit> AgeLimets
+        {
+            get { return (ObservableCollection<AgeLimit>)GetValue(AgeLimetsProperty); }
+            set { SetValue(AgeLimetsProperty, value); }
+        }
+
+        public static readonly DependencyProperty AgeLimetsProperty =
+            DependencyProperty.Register("AgeLimets", typeof(ObservableCollection<AgeLimit>), typeof(EditAnime));
     }
 }

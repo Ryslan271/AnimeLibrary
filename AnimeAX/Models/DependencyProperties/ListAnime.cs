@@ -1,6 +1,7 @@
 ﻿using AnimeAX.Models.DataBase;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 
 #region список Dependency Property для списка аниме клиента
@@ -44,14 +45,14 @@ namespace AnimeAX.View.ForClient.Pages
         public static readonly DependencyProperty CurrentAnimeGenresProperty =
             DependencyProperty.Register("CurrentAnimeGenres", typeof(ObservableCollection<AnimeGenre>), typeof(ListAnime));
 
-        public ObservableCollection<Anime> Animes
+        public ICollectionView Animes
         {
-            get { return (ObservableCollection<Anime>)GetValue(AnimesProperty); }
+            get { return (ICollectionView)GetValue(AnimesProperty); }
             set { SetValue(AnimesProperty, value); }
         }
 
         public static readonly DependencyProperty AnimesProperty =
-            DependencyProperty.Register("Animes", typeof(ObservableCollection<Anime>), typeof(ListAnime));
+            DependencyProperty.Register("Animes", typeof(ICollectionView), typeof(ListAnime));
     }
 }
 #endregion
@@ -97,14 +98,14 @@ namespace AnimeAX.View.ForAdmin.Pages
         public static readonly DependencyProperty CurrentAnimeGenresProperty =
             DependencyProperty.Register("CurrentAnimeGenres", typeof(ObservableCollection<AnimeGenre>), typeof(ListAnime));
 
-        public ObservableCollection<Anime> Animes
+        public ICollectionView Animes
         {
-            get { return (ObservableCollection<Anime>)GetValue(AnimesProperty); }
+            get { return (ICollectionView)GetValue(AnimesProperty); }
             set { SetValue(AnimesProperty, value); }
         }
 
         public static readonly DependencyProperty AnimesProperty =
-            DependencyProperty.Register("Animes", typeof(ObservableCollection<Anime>), typeof(ListAnime));
+            DependencyProperty.Register("Animes", typeof(ICollectionView), typeof(ListAnime));
     }
 }
 #endregion

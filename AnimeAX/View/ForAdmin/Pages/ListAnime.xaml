@@ -157,8 +157,7 @@
                         x:Name="ComboBoxGenre"
                         Height="35"
                         ItemsSource="{Binding AnimeGenres}"
-                        SelectedIndex="0"
-                        SelectionChanged="ComboBoxGenre_SelectionChanged">
+                        SelectedIndex="0">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Genre}" />
