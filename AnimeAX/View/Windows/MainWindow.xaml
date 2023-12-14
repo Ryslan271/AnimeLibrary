@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <ui:TitleBar
-            Title="Все доступные тайтлы"
+            Title="AnimeAX"
             Grid.ColumnSpan="2"
             Padding="10,10"
             Background="Bisque"

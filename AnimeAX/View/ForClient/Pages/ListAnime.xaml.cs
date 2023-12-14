@@ -67,5 +67,15 @@ namespace AnimeAX.View.ForClient.Pages
         {
             MainWindow.Instance.MainFrame.Navigate(new ViewAnime(AnimeListBox.SelectedItem as Anime));
         }
+
+        private void ViewFavorities(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.MainFrame.Navigate(new FavoritesAnime());
+        }
+
+        private void UserAnimes(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.MainFrame.Navigate(new AnimeUser());
+        }
     }
 }

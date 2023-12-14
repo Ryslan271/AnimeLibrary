@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AnimeAX.Models.DataBase;
+﻿using AnimeAX.Models.DataBase;
 using AnimeAX.View.Windows;
+using System.Linq;
+using System.Windows;
 using Wpf.Ui.Controls;
 
 namespace AnimeAX.View.ForClient.Pages
@@ -28,7 +16,38 @@ namespace AnimeAX.View.ForClient.Pages
 
             CurrentAnime = anime;
 
+            AnimeStatus = App.Db.Status.Local;
+
             InitializeComponent();
+
+            ComboBoxStatus.SelectionChanged += (e, sender) =>
+            {
+                AddNewAnimeStatusFromUser();
+            };
+        }
+
+        private void AddNewAnimeStatusFromUser()
+        {
+            if (ComboBoxStatus.SelectedItem == null)
+                return;
+
+            var statusAnime = App.Db.AnimeStatusFromUser.Local.FirstOrDefault(s => s.User == App.CurrentUser && s.Anime == CurrentAnime);
+
+            if (statusAnime != null)
+            {
+                statusAnime.Status = ComboBoxStatus.SelectedItem as Status;
+                App.Db.SaveChanges();
+                return;
+            }
+
+            App.Db.AnimeStatusFromUser.Local.Add(new AnimeStatusFromUser()
+            {
+                Anime = CurrentAnime,
+                Status = ComboBoxStatus.SelectedItem as Status,
+                User = App.CurrentUser
+            });
+
+            App.Db.SaveChanges();
         }
 
         private void PlayPlayer(object sender, RoutedEventArgs e)

@@ -116,11 +116,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ForClient\Pages\AnimeUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ForClient\Pages\ListAnime.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ForClient\Pages\ViewAnime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ForClient\Pages\ViewFavoriteAnime.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -194,22 +202,31 @@
     <Compile Include="Models\DataBase\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DependencyProperties\AnimeUser.cs" />
     <Compile Include="Models\DependencyProperties\EditAnime.cs" />
     <Compile Include="Models\DependencyProperties\ListAnime.cs" />
     <Compile Include="Models\DependencyProperties\MainWindow.cs" />
     <Compile Include="Models\DependencyProperties\ViewAnime.cs" />
+    <Compile Include="Models\DependencyProperties\ViewFavoriteAnime.cs" />
     <Compile Include="Models\Extension\Anime.cs" />
+    <Compile Include="Models\Extension\AnimeStatusFromUser.cs" />
     <Compile Include="View\ForAdmin\Pages\ListAnime.xaml.cs">
       <DependentUpon>ListAnime.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ForAdmin\Windows\EditAnime.xaml.cs">
       <DependentUpon>EditAnime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ForClient\Pages\AnimeUser.xaml.cs">
+      <DependentUpon>AnimeUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ForClient\Pages\ListAnime.xaml.cs">
       <DependentUpon>ListAnime.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ForClient\Pages\ViewAnime.xaml.cs">
       <DependentUpon>ViewAnime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ForClient\Pages\ViewFavoriteAnime.xaml.cs">
+      <DependentUpon>ViewFavoriteAnime.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -282,9 +299,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\ForClient\Windows\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

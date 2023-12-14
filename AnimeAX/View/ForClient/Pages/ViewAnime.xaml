@@ -24,6 +24,33 @@
                 Margin="10,0,0,0"
                 Click="AllAnime"
                 Content="Все аниме" />
+
+            <StackPanel
+                Margin="5,5,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                DockPanel.Dock="Right"
+                Orientation="Horizontal"
+                Style="{StaticResource ResourceKey=StyleStackPanel}">
+
+                <TextBlock
+                    Margin="0,0,10,0"
+                    VerticalAlignment="Center"
+                    FontSize="15"
+                    Text="Статус:" />
+                <ComboBox
+                    x:Name="ComboBoxStatus"
+                    Height="35"
+                    ItemsSource="{Binding AnimeStatus}"
+                    SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Status1}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
             <Button
                 Margin="0,0,10,0"
                 HorizontalAlignment="Right"
@@ -44,8 +71,7 @@
                 VerticalAlignment="Center"
                 LoadedBehavior="Manual"
                 Source="{Binding CurrentAnime.VideoFile}"
-                Stretch="UniformToFill"
-                Visibility="Hidden" />
+                Stretch="UniformToFill" />
         </Border>
 
         <StackPanel

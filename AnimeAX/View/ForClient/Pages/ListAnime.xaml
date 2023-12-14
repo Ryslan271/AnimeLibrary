@@ -163,5 +163,26 @@
                 </StackPanel>
             </StackPanel>
         </Border>
+
+        <StackPanel
+            Grid.Column="1"
+            Margin="10,5,0,0"
+            VerticalAlignment="Bottom"
+            Style="{StaticResource ResourceKey=StyleStackPanel}">
+
+            <Button
+                Margin="0,0,10,10"
+                HorizontalAlignment="Left"
+                Click="UserAnimes"
+                Content="Мои аниме"
+                DockPanel.Dock="Right" />
+
+            <Button
+                Margin="0,0,10,10"
+                HorizontalAlignment="Left"
+                Click="ViewFavorities"
+                Content="Избранные"
+                DockPanel.Dock="Right" />
+        </StackPanel>
     </Grid>
 </ui:UiPage>
