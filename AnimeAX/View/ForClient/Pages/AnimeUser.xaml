@@ -29,14 +29,16 @@
             Grid.Row="1"
             HorizontalAlignment="Left"
             d:ItemsSource="{d:SampleData ItemCount=6}"
+            ItemContainerStyle="{StaticResource ResourceKey=ListBoxOrders}"
             ItemsSource="{Binding Animes}"
-            MouseDoubleClick="ListBox_MouseDoubleClick">
+            MouseDoubleClick="ListBox_MouseDoubleClick"
+            VirtualizingPanel.ScrollUnit="Pixel">
             <ListBox.GroupStyle>
                 <GroupStyle ContainerStyle="{StaticResource ResourceKey=OrderListGroupStyle}" />
             </ListBox.GroupStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Left">
+                    <Grid HorizontalAlignment="Left" DataContext="{Binding Anime}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />

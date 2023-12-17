@@ -16,7 +16,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="8*" />
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <DockPanel>
@@ -59,39 +58,56 @@
                 DockPanel.Dock="Right" />
         </DockPanel>
 
-        <Border
-            Grid.Row="1"
-            Margin="5"
-            BorderBrush="Gray"
-            BorderThickness="3"
-            CornerRadius="3">
-            <MediaElement
-                Name="mePlayer"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                LoadedBehavior="Manual"
-                Source="{Binding CurrentAnime.VideoFile}"
-                Stretch="UniformToFill" />
-        </Border>
+        <ScrollViewer Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border
+                    Margin="5"
+                    BorderBrush="Gray"
+                    BorderThickness="3"
+                    CornerRadius="3">
+                    <MediaElement
+                        Name="mePlayer"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        LoadedBehavior="Manual"
+                        Source="{Binding CurrentAnime.VideoFile}"
+                        Stretch="UniformToFill" />
+                </Border>
 
-        <StackPanel
-            Grid.Row="2"
-            Margin="0,5,0,5"
-            HorizontalAlignment="Center"
-            Orientation="Horizontal">
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="0,5,0,5"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
 
-            <Button
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Click="PlayPlayer"
-                Content="Play" />
+                    <Button
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Click="PlayPlayer"
+                        Content="Play" />
 
-            <Button
-                Margin="10,0,0,0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Click="PausePlayer"
-                Content="Pause" />
-        </StackPanel>
+                    <Button
+                        Margin="10,0,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Click="PausePlayer"
+                        Content="Pause" />
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="2"
+                    Margin="0,0,0,20"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource ResourceKey=StyleStackPanel}">
+                    <TextBlock Text="Описание тайтла:" />
+                    <TextBlock Text="{Binding CurrentAnime.ContentText}" TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </ui:UiPage>

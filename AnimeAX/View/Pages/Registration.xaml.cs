@@ -42,6 +42,7 @@ namespace AnimeAX.View.Pages
             {
                 User userNew = new User() 
                 {
+                    Login = LoginBox.Text.Trim(),
                     Password = PasswordBox.Password.Trim(),
                     Nickname = NameBox.Text.Trim(),
                     Age = Convert.ToInt32(AgeBox.Text.Trim())
@@ -57,7 +58,7 @@ namespace AnimeAX.View.Pages
             }
             catch (Exception)
             {
-                MessageBox.Show("Что то случилось, пожалуйста, проверьте введенный данные");
+                MessageBox.Show("Что то случилось, пожалуйста, проверьте введенный данные ");
                 return;
             }
 

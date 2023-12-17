@@ -34,7 +34,8 @@
                     HorizontalAlignment="Left"
                     d:ItemsSource="{d:SampleData ItemCount=6}"
                     ItemsSource="{Binding Animes}"
-                    MouseDoubleClick="ListBox_MouseDoubleClick">
+                    MouseDoubleClick="ListBox_MouseDoubleClick"
+                    VirtualizingPanel.ScrollUnit="Pixel">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid HorizontalAlignment="Left">
