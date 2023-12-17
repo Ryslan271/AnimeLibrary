@@ -20,17 +20,17 @@ namespace AnimeAX.View.Pages
                 return;
 
             var user = UserSearch(LoginBox.Text.Trim(), PasswordBox.Password.Trim());
+            var admin = AdminSearch(LoginBox.Text.Trim(), PasswordBox.Password.Trim());
 
-            if (user == null)
-            {
+            if (user != null)
+                App.CurrentUser = user;
+            else if (admin != null)
+                App.Admin = admin;
+            else
                 MessageBox.Show("Такой пользователь не зарегистрирован");
-                return;
-            }
 
-            App.CurrentUser = user;
-
-            new MainWindow().Show();
             Entrance.Instance.Close();
+
         }
 
         private void GoToRegistrationPage_Click(object sender, RoutedEventArgs e)

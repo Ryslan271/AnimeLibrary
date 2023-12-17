@@ -1,4 +1,4 @@
-﻿using AnimeAX.View.ForClient.Pages;
+﻿using AnimeAX.View;
 using Wpf.Ui.Controls;
 
 namespace AnimeAX.View.Windows
@@ -16,7 +16,10 @@ namespace AnimeAX.View.Windows
 
             Instance = this;
 
-            MainFrame.Navigate(new ListAnime());
+            if (App.CurrentUser != null)
+                MainFrame.Navigate(new ForClient.Pages.ListAnime());
+            else
+                MainFrame.Navigate(new ForAdmin.Pages.ListAnime());
         }
     }
 }
