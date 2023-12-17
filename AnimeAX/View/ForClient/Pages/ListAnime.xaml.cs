@@ -70,7 +70,7 @@ namespace AnimeAX.View.ForClient.Pages
 
         private void ViewFavorities(object sender, RoutedEventArgs e)
         {
-            MainWindow.Instance.MainFrame.Navigate(new FavoritesAnime());
+            MainWindow.Instance.MainFrame.Navigate(new ViewFavoriteAnime());
         }
 
         private void UserAnimes(object sender, RoutedEventArgs e)
