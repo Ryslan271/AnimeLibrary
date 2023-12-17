@@ -18,6 +18,17 @@ namespace AnimeAX.View.ForClient.Pages
 
             AnimeStatus = App.Db.Status.Local;
 
+            if (App.Db.FavoritesAnime.Local.FirstOrDefault(a => a.User == App.CurrentUser && a.Anime == CurrentAnime) == null)
+            {
+                VisibilityStarOutlineContentBtn = Visibility.Visible;
+                VisibilityStartContentBtn = Visibility.Hidden;
+            }
+            else
+            {
+                VisibilityStarOutlineContentBtn = Visibility.Hidden;
+                VisibilityStartContentBtn = Visibility.Visible;
+            }
+
             InitializeComponent();
 
             ComboBoxStatus.SelectionChanged += (e, sender) =>
@@ -61,12 +72,24 @@ namespace AnimeAX.View.ForClient.Pages
 
         private void AddInFavorites(object sender, RoutedEventArgs e)
         {
-            App.CurrentUser.FavoritesAnime.Add(new FavoritesAnime
+            if (App.Db.FavoritesAnime.Local.FirstOrDefault(a => a.User == App.CurrentUser && a.Anime == CurrentAnime) == null)
             {
-                Anime = CurrentAnime,
-                User = App.CurrentUser
-            });
+                VisibilityStarOutlineContentBtn = Visibility.Hidden;
+                VisibilityStartContentBtn = Visibility.Visible;
 
+                App.CurrentUser.FavoritesAnime.Add(new FavoritesAnime
+                {
+                    Anime = CurrentAnime,
+                    User = App.CurrentUser
+                });
+            }
+            else 
+            {
+                VisibilityStarOutlineContentBtn = Visibility.Visible;
+                VisibilityStartContentBtn = Visibility.Hidden;
+
+                App.Db.FavoritesAnime.Local.Remove(App.Db.FavoritesAnime.Local.FirstOrDefault(a => a.User == App.CurrentUser && a.Anime == CurrentAnime));
+            }
             App.Db.SaveChanges();
         }
     }

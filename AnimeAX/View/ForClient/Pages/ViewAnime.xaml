@@ -41,7 +41,7 @@
                     x:Name="ComboBoxStatus"
                     Height="35"
                     ItemsSource="{Binding AnimeStatus}"
-                    SelectedIndex="0">
+                    SelectedIndex="{Binding CurrentAnime.AnimeStatusId}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Status1}" />
@@ -52,10 +52,31 @@
 
             <Button
                 Margin="0,0,10,0"
+                Padding="0"
                 HorizontalAlignment="Right"
+                Background="Transparent"
                 Click="AddInFavorites"
-                Content="Добавить в избранные"
-                DockPanel.Dock="Right" />
+                DockPanel.Dock="Right">
+                <Button.Content>
+                    <Grid>
+                        <fa:ImageAwesome
+                            x:Name="StarContentBtn"
+                            Width="30"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Icon="Star"
+                            Visibility="{Binding VisibilityStartContentBtn}" />
+
+                        <fa:ImageAwesome
+                            x:Name="StarOutlineContentBtn"
+                            Width="30"
+                            Height="30"
+                            HorizontalAlignment="Center"
+                            Icon="StarOutline"
+                            Visibility="{Binding VisibilityStarOutlineContentBtn}" />
+                    </Grid>
+                </Button.Content>
+            </Button>
         </DockPanel>
 
         <ScrollViewer Grid.Row="1">
