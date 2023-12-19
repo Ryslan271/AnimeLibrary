@@ -29,8 +29,12 @@ namespace AnimeAX.View.Pages
             else
                 MessageBox.Show("Такой пользователь не зарегистрирован");
 
-            Entrance.Instance.Close();
+            if (user != null || admin != null)
+            {
+                new MainWindow().Show();
 
+                Entrance.Instance.Close();
+            }
         }
 
         private void GoToRegistrationPage_Click(object sender, RoutedEventArgs e)

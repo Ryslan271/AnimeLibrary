@@ -1,6 +1,7 @@
 ﻿using AnimeAX.Models.DataBase;
 using AnimeAX.View.ForAdmin.Windows;
 using AnimeAX.View.Windows;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
@@ -16,28 +17,32 @@ namespace AnimeAX.View.ForClient.Pages
         {
             Animes = new CollectionViewSource { Source = App.Db.Anime.Local }.View;
 
-            AnimeGenres = App.Db.AnimeGenre.Local;
-            AnimeStatuses = App.Db.AnimeStatus.Local;
-            AnimeTypes = App.Db.AnimeType.Local;
+            AnimeGenres = new ObservableCollection<AnimeGenre> (App.Db.AnimeGenre.Local);
+            AnimeStatuses = new ObservableCollection<AnimeStatus>(App.Db.AnimeStatus.Local);
+            AnimeTypes = new ObservableCollection<AnimeType>(App.Db.AnimeType.Local);
+
+            AnimeGenres.Insert(0, new AnimeGenre() { Id = 0, Genre = "Все" });
+            AnimeStatuses.Insert(0, new AnimeStatus() { Id = 0, Status = "Все" });
+            AnimeTypes.Insert(0, new AnimeType() { Id = 0, Type = "Все" });
 
             InitializeComponent();
 
             ComboBoxType.SelectionChanged += (e, sender) =>
             {
                 if (ComboBoxType.SelectedItem != null)
-                    FilterproductsDefault((ComboBoxType.SelectedItem as AnimeType).Type);
+                    FilterAnimeDefault((ComboBoxType.SelectedItem as AnimeType).Type);
             };
 
             ComboBoxGenre.SelectionChanged += (e, sender) =>
             {
                 if (ComboBoxGenre.SelectedItem != null)
-                    FilterproductsDefault((ComboBoxGenre.SelectedItem as AnimeGenre).Genre);
+                    FilterAnimeDefault((ComboBoxGenre.SelectedItem as AnimeGenre).Genre);
             };
 
             ComboBoxStatus.SelectionChanged += (e, sender) =>
             {
                 if (ComboBoxStatus.SelectedItem != null)
-                    FilterproductsDefault((ComboBoxStatus.SelectedItem as AnimeStatus).Status);
+                    FilterAnimeDefault((ComboBoxStatus.SelectedItem as AnimeStatus).Status);
             };
 
             Instance = this;
@@ -45,20 +50,18 @@ namespace AnimeAX.View.ForClient.Pages
 
         #region Фильтрация 
 
-        private void FilterproductsDefault(string tag)
+        private void FilterAnimeDefault(string tag)
         {
             Animes.Filter = (obj) =>
             {
                 var anime = obj as Anime;
 
-                if (anime.AnimeStatus.Status.Contains(tag) == true)
-                    return true;
-                else if (anime.AnimeType.Type.Contains(tag) == true)
-                    return true;
-                else if (App.Db.AnimeGenre_Anime.Local.Where(a => a.Anime == anime).Select(s => s.AnimeGenre).Select(g => g.Genre).Contains(tag) == true)
-                    return true;
+                if (anime.AnimeStatus.Status.Contains(tag) == false ||
+                    anime.AnimeType.Type.Contains(tag) == false ||
+                    App.Db.AnimeGenre_Anime.Local.Where(a => a.Anime == anime).Select(s => s.AnimeGenre).Select(g => g.Genre).Contains(tag) == false)
+                    return false;
 
-                return false;
+                return true;
             };
         }
         #endregion

@@ -25,20 +25,22 @@
 
         <Border
             Margin="10,0,10,10"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Center"
             BorderBrush="#adb5bd"
             BorderThickness="2"
             CornerRadius="4">
-            <StackPanel
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Style="{StaticResource ResourceKey=StyleStackPanel}">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
                 <ListBox
                     x:Name="AnimeListBox"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Center"
                     d:ItemsSource="{d:SampleData ItemCount=6}"
                     ItemsSource="{Binding Animes}"
                     MouseDoubleClick="ListBox_MouseDoubleClick">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid HorizontalAlignment="Left">
@@ -90,7 +92,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </StackPanel>
+            </Grid>
         </Border>
 
         <Border

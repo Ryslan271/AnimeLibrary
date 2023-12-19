@@ -22,6 +22,15 @@ namespace AnimeAX.View.Pages
         /// <param name="Password">Password</param>
         /// <returns>Найденный администратор</returns>
         private Administrator AdminSearch(string Login, string Password)
-            => App.Db.Administrator.Local.FirstOrDefault(x => x.Login == Convert.ToInt32(Login) && x.Password == Password);
+        {
+            try
+            {
+                return App.Db.Administrator.Local.FirstOrDefault(x => x.Login == Convert.ToInt32(Login) && x.Password == Password);
+            }
+            catch 
+            {
+                return null;
+            }
+        }
     }
 }

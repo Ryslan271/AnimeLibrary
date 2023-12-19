@@ -37,11 +37,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSVideoPlayer, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSVideoPlayer.1.0.3\lib\net472\CSVideoPlayer.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FFmpeg.AutoGen, Version=4.2.2.1, Culture=neutral, PublicKeyToken=9b7632533a381715, processorArchitecture=MSIL">
+      <HintPath>..\packages\CSVideoPlayer.1.0.3\lib\net472\FFmpeg.AutoGen.dll</HintPath>
     </Reference>
     <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
@@ -266,6 +272,16 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\FFmpeg\x86\avcodec-58.dll" />
+    <Content Include="Resources\FFmpeg\x86\avdevice-58.dll" />
+    <Content Include="Resources\FFmpeg\x86\avfilter-7.dll" />
+    <Content Include="Resources\FFmpeg\x86\avformat-58.dll" />
+    <Content Include="Resources\FFmpeg\x86\avutil-56.dll" />
+    <Content Include="Resources\FFmpeg\x86\ffmpeg.exe" />
+    <Content Include="Resources\FFmpeg\x86\ffplay.exe" />
+    <Content Include="Resources\FFmpeg\x86\ffprobe.exe" />
+    <Content Include="Resources\FFmpeg\x86\swresample-3.dll" />
+    <Content Include="Resources\FFmpeg\x86\swscale-5.dll" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -307,5 +323,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\CSVideoPlayer.1.0.3\build\CSVideoPlayer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CSVideoPlayer.1.0.3\build\CSVideoPlayer.targets'))" />
   </Target>
+  <Import Project="..\packages\CSVideoPlayer.1.0.3\build\CSVideoPlayer.targets" Condition="Exists('..\packages\CSVideoPlayer.1.0.3\build\CSVideoPlayer.targets')" />
 </Project>
