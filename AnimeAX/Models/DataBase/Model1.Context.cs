@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AnimeAX.Models.DataBase
+namespace AnimeAX.fonts.Models.DataBase
 {
     using System;
     using System.Data.Entity;

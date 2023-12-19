@@ -31,6 +31,12 @@ namespace AnimeAX.View.Pages
                 return;
             }
 
+            if (Convert.ToInt32(AgeBox.Text.Trim()) < 10 || Convert.ToInt32(AgeBox.Text.Trim()) > 100)
+            {
+                MessageBox.Show("Просим проверить возраст", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             (List<string> message, bool flag) = ValidatePassword(PasswordBox.Password.Trim());
 
             if (flag == false)

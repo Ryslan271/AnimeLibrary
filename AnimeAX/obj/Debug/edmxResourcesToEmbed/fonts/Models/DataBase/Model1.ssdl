@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище AnimebdModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AgeLimit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FromAge" Type="int" Nullable="false" />
+    <Property Name="BeforeAge" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Anime">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ContentText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FileBit" Type="varbinary(max)" />
+    <Property Name="AnimeTypeId" Type="int" Nullable="false" />
+    <Property Name="AnimeStatusId" Type="int" Nullable="false" />
+    <Property Name="AgeLimitId" Type="int" Nullable="false" />
+    <Property Name="Image" Type="image" />
+  </EntityType>
+  <EntityType Name="AnimeGenre">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Genre" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnimeGenre_Anime">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="AnimeId" Type="int" Nullable="false" />
+    <Property Name="AnimeGenreId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnimeStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnimeStatusFromUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnimeId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="StatusId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnimeType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FavoritesAnime">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="AnimeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nickname" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Anime_AgeLimit">
+    <End Role="AgeLimit" Type="Self.AgeLimit" Multiplicity="1" />
+    <End Role="Anime" Type="Self.Anime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AgeLimit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Anime">
+        <PropertyRef Name="AgeLimitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Anime_AnimeStatus">
+    <End Role="AnimeStatus" Type="Self.AnimeStatus" Multiplicity="1" />
+    <End Role="Anime" Type="Self.Anime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnimeStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Anime">
+        <PropertyRef Name="AnimeStatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Anime_AnimeType">
+    <End Role="AnimeType" Type="Self.AnimeType" Multiplicity="1" />
+    <End Role="Anime" Type="Self.Anime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnimeType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Anime">
+        <PropertyRef Name="AnimeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnimeGenre_Anime_Anime">
+    <End Role="Anime" Type="Self.Anime" Multiplicity="1" />
+    <End Role="AnimeGenre_Anime" Type="Self.AnimeGenre_Anime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Anime">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AnimeGenre_Anime">
+        <PropertyRef Name="AnimeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnimeGenre_Anime_AnimeGenre">
+    <End Role="AnimeGenre" Type="Self.AnimeGenre" Multiplicity="1" />
+    <End Role="AnimeGenre_Anime" Type="Self.AnimeGenre_Anime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnimeGenre">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AnimeGenre_Anime">
+        <PropertyRef Name="AnimeGenreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnimeStatusFromUser_Anime">
+    <End Role="Anime" Type="Self.Anime" Multiplicity="1" />
+    <End Role="AnimeStatusFromUser" Type="Self.AnimeStatusFromUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Anime">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AnimeStatusFromUser">
+        <PropertyRef Name="AnimeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnimeStatusFromUser_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="AnimeStatusFromUser" Type="Self.AnimeStatusFromUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AnimeStatusFromUser">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnimeStatusFromUser_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AnimeStatusFromUser" Type="Self.AnimeStatusFromUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AnimeStatusFromUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FavoritesAnime_Anime">
+    <End Role="Anime" Type="Self.Anime" Multiplicity="1" />
+    <End Role="FavoritesAnime" Type="Self.FavoritesAnime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Anime">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FavoritesAnime">
+        <PropertyRef Name="AnimeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FavoritesAnime_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FavoritesAnime" Type="Self.FavoritesAnime" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FavoritesAnime">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище AnimebdModelContainer">
+    <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AgeLimit" EntityType="Self.AgeLimit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Anime" EntityType="Self.Anime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnimeGenre" EntityType="Self.AnimeGenre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnimeGenre_Anime" EntityType="Self.AnimeGenre_Anime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnimeStatus" EntityType="Self.AnimeStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnimeStatusFromUser" EntityType="Self.AnimeStatusFromUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AnimeType" EntityType="Self.AnimeType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FavoritesAnime" EntityType="Self.FavoritesAnime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Anime_AgeLimit" Association="Self.FK_Anime_AgeLimit">
+      <End Role="AgeLimit" EntitySet="AgeLimit" />
+      <End Role="Anime" EntitySet="Anime" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Anime_AnimeStatus" Association="Self.FK_Anime_AnimeStatus">
+      <End Role="AnimeStatus" EntitySet="AnimeStatus" />
+      <End Role="Anime" EntitySet="Anime" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Anime_AnimeType" Association="Self.FK_Anime_AnimeType">
+      <End Role="AnimeType" EntitySet="AnimeType" />
+      <End Role="Anime" EntitySet="Anime" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnimeGenre_Anime_Anime" Association="Self.FK_AnimeGenre_Anime_Anime">
+      <End Role="Anime" EntitySet="Anime" />
+      <End Role="AnimeGenre_Anime" EntitySet="AnimeGenre_Anime" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnimeGenre_Anime_AnimeGenre" Association="Self.FK_AnimeGenre_Anime_AnimeGenre">
+      <End Role="AnimeGenre" EntitySet="AnimeGenre" />
+      <End Role="AnimeGenre_Anime" EntitySet="AnimeGenre_Anime" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnimeStatusFromUser_Anime" Association="Self.FK_AnimeStatusFromUser_Anime">
+      <End Role="Anime" EntitySet="Anime" />
+      <End Role="AnimeStatusFromUser" EntitySet="AnimeStatusFromUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnimeStatusFromUser_Status" Association="Self.FK_AnimeStatusFromUser_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="AnimeStatusFromUser" EntitySet="AnimeStatusFromUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnimeStatusFromUser_User" Association="Self.FK_AnimeStatusFromUser_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="AnimeStatusFromUser" EntitySet="AnimeStatusFromUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FavoritesAnime_Anime" Association="Self.FK_FavoritesAnime_Anime">
+      <End Role="Anime" EntitySet="Anime" />
+      <End Role="FavoritesAnime" EntitySet="FavoritesAnime" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FavoritesAnime_User" Association="Self.FK_FavoritesAnime_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FavoritesAnime" EntitySet="FavoritesAnime" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

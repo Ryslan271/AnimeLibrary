@@ -12,7 +12,7 @@ namespace AnimeAX
         public static Administrator Admin;
 
         public App()
-        {
+        { 
             Db.Administrator.Load();
             Db.AgeLimit.Load();
             Db.Anime.Load();

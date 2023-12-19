@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using Wpf.Ui.Controls;
 
+
 namespace AnimeAX.View.ForClient.Pages
 {
     /// <summary>
@@ -83,7 +84,7 @@ namespace AnimeAX.View.ForClient.Pages
                     User = App.CurrentUser
                 });
             }
-            else 
+            else
             {
                 VisibilityStarOutlineContentBtn = Visibility.Visible;
                 VisibilityStartContentBtn = Visibility.Hidden;

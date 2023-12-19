@@ -20,6 +20,7 @@ namespace AnimeAX.View.Pages
                 return;
 
             var user = UserSearch(LoginBox.Text.Trim(), PasswordBox.Password.Trim());
+
             var admin = AdminSearch(LoginBox.Text.Trim(), PasswordBox.Password.Trim());
 
             if (user != null)
@@ -27,8 +28,12 @@ namespace AnimeAX.View.Pages
             else if (admin != null)
                 App.Admin = admin;
             else
+            {
                 MessageBox.Show("Такой пользователь не зарегистрирован");
+                return;
+            }
 
+            new MainWindow().Show();
             Entrance.Instance.Close();
 
         }

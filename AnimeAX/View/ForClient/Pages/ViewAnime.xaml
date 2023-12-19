@@ -87,6 +87,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Border
+                    MaxHeight="400"
                     Margin="5"
                     BorderBrush="Gray"
                     BorderThickness="3"
