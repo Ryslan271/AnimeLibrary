@@ -143,6 +143,7 @@ namespace AnimeAX.View.ForAdmin.Windows
                                 AnimeGenre = genre
                             }
                         );
+                    ListAnime.Instance.AnimeListBox.Items.Refresh();
                 }
 
 

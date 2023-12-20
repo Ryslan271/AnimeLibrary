@@ -25,24 +25,27 @@
             BorderBrush="#adb5bd"
             BorderThickness="2"
             CornerRadius="4">
-            <StackPanel
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Style="{StaticResource ResourceKey=StyleStackPanel}">
-                <ListBox
-                    x:Name="AnimeListBox"
-                    HorizontalAlignment="Left"
-                    d:ItemsSource="{d:SampleData ItemCount=6}"
-                    ItemsSource="{Binding Animes}"
-                    MouseDoubleClick="ListBox_MouseDoubleClick"
-                    VirtualizingPanel.ScrollUnit="Pixel">
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
+            <ListBox
+                x:Name="AnimeListBox"
+                HorizontalAlignment="Center"
+                d:ItemsSource="{d:SampleData ItemCount=6}"
+                ItemsSource="{Binding Animes}"
+                MouseDoubleClick="ListBox_MouseDoubleClick"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                VirtualizingPanel.ScrollUnit="Pixel">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Padding="4,5"
+                            HorizontalAlignment="Stretch"
+                            BorderBrush="#adb5bd"
+                            BorderThickness="2"
+                            CornerRadius="4">
                             <Grid HorizontalAlignment="Left">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
@@ -51,8 +54,8 @@
 
                                 <Image
                                     MinWidth="70"
-                                    MinHeight="100"
-                                    MaxHeight="100"
+                                    MinHeight="200"
+                                    MaxHeight="200"
                                     Margin="0,0,10,0"
                                     VerticalAlignment="Top"
                                     Source="{Binding Image}" />
@@ -89,10 +92,10 @@
                                         TextWrapping="Wrap" />
                                 </Grid>
                             </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Border>
 
         <Border
@@ -178,17 +181,25 @@
 
             <Button
                 Margin="0,0,10,10"
-                HorizontalAlignment="Left"
+                HorizontalAlignment="Center"
                 Click="UserAnimes"
                 Content="Мои аниме"
                 DockPanel.Dock="Right" />
 
             <Button
                 Margin="0,0,10,10"
-                HorizontalAlignment="Left"
+                HorizontalAlignment="Center"
                 Click="ViewFavorities"
                 Content="Избранные"
                 DockPanel.Dock="Right" />
+
+            <Button
+                Margin="0,0,10,10"
+                HorizontalAlignment="Center"
+                Click="Exit"
+                Content="Выйти"
+                DockPanel.Dock="Right" />
+
         </StackPanel>
     </Grid>
 </ui:UiPage>

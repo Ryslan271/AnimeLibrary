@@ -80,5 +80,12 @@ namespace AnimeAX.View.ForClient.Pages
         {
             MainWindow.Instance.MainFrame.Navigate(new AnimeUser());
         }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            App.CurrentUser = null;
+            new Entrance().Show();
+            MainWindow.Instance.Close();
+        }
     }
 }

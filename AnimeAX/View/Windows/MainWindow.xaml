@@ -23,7 +23,6 @@
 
         <ui:TitleBar
             Title="AnimeAX"
-            Grid.ColumnSpan="2"
             Padding="10,10"
             Background="Bisque"
             FontSize="12"

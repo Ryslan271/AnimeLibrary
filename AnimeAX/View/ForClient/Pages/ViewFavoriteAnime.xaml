@@ -30,7 +30,11 @@
             HorizontalAlignment="Left"
             d:ItemsSource="{d:SampleData ItemCount=6}"
             ItemsSource="{Binding Favorites}"
-            MouseDoubleClick="ListBox_MouseDoubleClick">
+            MouseDoubleClick="ListBox_MouseDoubleClick"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.GroupStyle>
+                <GroupStyle ContainerStyle="{StaticResource ResourceKey=OrderListGroupStyle}" />
+            </ListBox.GroupStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Left">

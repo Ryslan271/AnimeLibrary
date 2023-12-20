@@ -32,6 +32,7 @@
             ItemContainerStyle="{StaticResource ResourceKey=ListBoxOrders}"
             ItemsSource="{Binding Animes}"
             MouseDoubleClick="ListBox_MouseDoubleClick"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             VirtualizingPanel.ScrollUnit="Pixel">
             <ListBox.GroupStyle>
                 <GroupStyle ContainerStyle="{StaticResource ResourceKey=OrderListGroupStyle}" />

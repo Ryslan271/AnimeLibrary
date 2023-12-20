@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using Wpf.Ui.Controls;
+using MessageBox = System.Windows.MessageBox;
 
 namespace AnimeAX.View.ForAdmin.Pages
 {
@@ -70,6 +71,18 @@ namespace AnimeAX.View.ForAdmin.Pages
         private void AddNewAnime(object sender, RoutedEventArgs e)
         {
             new EditAnime().ShowDialog();
+        }
+
+        private void DeleteAnime_Click(object sender, RoutedEventArgs e)
+        {
+            if (AnimeListBox.SelectedItem == null)
+                return;
+
+            if (MessageBox.Show("Вы уверены, что хотите удалить данный сериал?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                App.Db.Anime.Local.Remove(AnimeListBox.SelectedItem as Anime);
+                App.Db.SaveChanges();
+            }
         }
     }
 }
